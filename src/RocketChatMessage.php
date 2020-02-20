@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NotificationChannels\RocketChat;
 
-class RocketChatMessage
+final class RocketChatMessage
 {
     /**
      * RocketChat channel id.

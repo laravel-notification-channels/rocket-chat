@@ -7,7 +7,7 @@ namespace NotificationChannels\RocketChat;
 use GuzzleHttp\Client as HttpClient;
 use Psr\Http\Message\ResponseInterface;
 
-class RocketChat
+final class RocketChat
 {
     /** @var \GuzzleHttp\Client */
     protected $http;

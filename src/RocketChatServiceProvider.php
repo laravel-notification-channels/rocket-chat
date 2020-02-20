@@ -8,17 +8,8 @@ use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
-class RocketChatServiceProvider extends ServiceProvider
+final class RocketChatServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register(): void
-    {
-    }
-
     /**
      * Bootstrap the application services.
      *

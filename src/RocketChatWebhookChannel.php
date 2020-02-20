@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notification;
 use NotificationChannels\RocketChat\Exceptions\CouldNotSendNotification;
 use Psr\Http\Message\ResponseInterface;
 
-class RocketChatWebhookChannel
+final class RocketChatWebhookChannel
 {
     /**
      * The HTTP client instance.
