@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace NotificationChannels\RocketChat\Test;
 
-use Illuminate\Notifications\Notifiable;
-use Mockery;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
+use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use NotificationChannels\RocketChat\Exceptions\CouldNotSendNotification;
 use NotificationChannels\RocketChat\RocketChat;
 use NotificationChannels\RocketChat\RocketChatMessage;
 use NotificationChannels\RocketChat\RocketChatWebhookChannel;
-use NotificationChannels\RocketChat\Exceptions\CouldNotSendNotification;
 use PHPUnit\Framework\TestCase;
 
 final class RocketChatWebhookChannelTest extends TestCase
