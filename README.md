@@ -76,7 +76,7 @@ class TaskCompleted extends Notification
 
     public function toRocketChat($notifiable): RocketChatMessage
     {
-        return RocketChatMessage::create("Test message")
+        return RocketChatMessage::create('Test message')
             ->to('channel_name') // optional if set in config
             ->from('webhook_token'); // optional if set in config
     }
