@@ -10,16 +10,16 @@ use Psr\Http\Message\ResponseInterface;
 final class RocketChat
 {
     /** @var \GuzzleHttp\Client */
-    protected $http;
+    private $http;
 
     /** @var string */
-    protected $url;
+    private $url;
 
     /** @var string */
-    protected $token;
+    private $token;
 
     /** @var string */
-    protected $channel;
+    private $channel;
 
     /**
      * @param  \GuzzleHttp\Client  $http

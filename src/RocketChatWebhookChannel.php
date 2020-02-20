@@ -67,7 +67,7 @@ final class RocketChatWebhookChannel
      * @param  \NotificationChannels\RocketChat\RocketChatMessage  $message
      * @return \Psr\Http\Message\ResponseInterface
      */
-    protected function sendMessage($to, RocketChatMessage $message): ResponseInterface
+    private function sendMessage($to, RocketChatMessage $message): ResponseInterface
     {
         return $this->rocketChat->sendMessage($to, $message->toArray());
     }
