@@ -1,4 +1,4 @@
-# Rocket.Chat notifications channel for Laravel 5.6+
+# Rocket.Chat Laravel Notifications Channel
 
 ![cog-laravel-rocket-chat-notification-channel](https://user-images.githubusercontent.com/1849174/74969369-87649980-542d-11ea-9692-c6f7ba68e2bf.png)
 
