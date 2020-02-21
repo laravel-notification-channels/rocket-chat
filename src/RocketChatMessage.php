@@ -5,11 +5,11 @@ namespace NotificationChannels\RocketChat;
 class RocketChatMessage
 {
     /**
-     * RocketChat room id.
+     * RocketChat channel id.
      *
      * @var string
      */
-    public $room = '';
+    public $channel = '';
 
     /**
      * A user or app access token.
@@ -90,12 +90,12 @@ class RocketChatMessage
     /**
      * Set the RocketChat room the message should be sent to.
      *
-     * @param  string $room
+     * @param  string $channel
      * @return $this
      */
-    public function to($room): self
+    public function to($channel): self
     {
-        $this->room = $room;
+        $this->channel = $channel;
 
         return $this;
     }
