@@ -51,7 +51,7 @@ class RocketChatMessage
     /**
      * Attachments of the message.
      *
-     * @var RocketChatAttachment[]
+     * @var \NotificationChannels\RocketChat\RocketChatAttachment[]
      */
     public $attachments = [];
 
@@ -142,7 +142,8 @@ class RocketChatMessage
     }
 
     /**
-     * Set the content of the RocketChat message. Supports GitHub flavoured markdown.
+     * Set the content of the RocketChat message.
+     * Supports GitHub flavoured markdown.
      *
      * @param  string  $content
      * @return $this
@@ -157,8 +158,7 @@ class RocketChatMessage
     /**
      * Add an attachment to the message.
      *
-     * @param array|RocketChatAttachment $attachment
-     *
+     * @param array|\NotificationChannels\RocketChat\RocketChatAttachment $attachment
      * @return $this
      */
     public function attachment($attachment): self
@@ -188,7 +188,7 @@ class RocketChatMessage
     }
 
     /**
-     * clear all attachments.
+     * Clear all attachments.
      *
      * @return $this
      */
@@ -207,11 +207,12 @@ class RocketChatMessage
     public function toArray(): array
     {
         $attachments = [];
+
         foreach ($this->attachments as $attachment) {
             $attachments[] = $attachment->toArray();
         }
 
-        $message = array_filter([
+        return array_filter([
             'text' => $this->content,
             'channel' => $this->channel,
             'alias' => $this->alias,
@@ -219,7 +220,5 @@ class RocketChatMessage
             'avatar' => $this->avatar,
             'attachments' => $attachments,
         ]);
-
-        return $message;
     }
 }
