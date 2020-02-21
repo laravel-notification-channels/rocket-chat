@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
-
 namespace NotificationChannels\RocketChat;
 
-final class RocketChatMessage
+class RocketChatMessage
 {
     /**
-     * RocketChat channel id.
+     * RocketChat room id.
      *
      * @var string
      */
-    public $channel = '';
+    public $room = '';
 
     /**
      * A user or app access token.
@@ -28,12 +26,42 @@ final class RocketChatMessage
     public $content = '';
 
     /**
+     * The alias name of the message.
+     *
+     * @var string
+     */
+    public $alias = '';
+
+    /**
+     * The avatar emoji of the message.
+     *
+     * @var string
+     */
+    public $emoji = '';
+
+    /**
+     * The avatar image of the message.
+     *
+     * @var string
+     */
+    public $avatar = '';
+
+
+    /**
+     * Attachments of the message
+     *
+     * @var RocketChatAttachment[]
+     */
+
+    public $attachments = [];
+
+    /**
      * Create a new instance of RocketChatMessage.
      *
      * @param  string  $content
      * @return static
      */
-    public static function create($content = ''): self
+    public static function create($content = '') : self
     {
         return new static($content);
     }
@@ -41,7 +69,7 @@ final class RocketChatMessage
     /**
      * Create a new instance of RocketChatMessage.
      *
-     * @param string $content
+     * @param $content
      */
     public function __construct($content = '')
     {
@@ -54,7 +82,7 @@ final class RocketChatMessage
      * @param  string  $accessToken
      * @return $this
      */
-    public function from($accessToken): self
+    public function from($accessToken) : self
     {
         $this->from = $accessToken;
 
@@ -62,14 +90,53 @@ final class RocketChatMessage
     }
 
     /**
-     * Set the RocketChat channel the message should be sent to.
+     * Set the RocketChat room the message should be sent to.
      *
-     * @param  string $channel
+     * @param  string $room
      * @return $this
      */
-    public function to($channel): self
+    public function to($room) : self
     {
-        $this->channel = $channel;
+        $this->room = $room;
+
+        return $this;
+    }
+
+    /**
+     * Set the sender's alias.
+     *
+     * @param  string $alias
+     * @return $this
+     */
+    public function alias(string $alias) : self
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Set the sender's emoji.
+     *
+     * @param  string $emoji
+     * @return $this
+     */
+    public function emoji(string $emoji) : self
+    {
+        $this->emoji = $emoji;
+
+        return $this;
+    }
+
+    /**
+     * Set the sender's avatar.
+     *
+     * @param  string $avatar
+     * @return $this
+     */
+    public function avatar(string $avatar) : self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
@@ -80,9 +147,53 @@ final class RocketChatMessage
      * @param  string  $content
      * @return $this
      */
-    public function content($content): self
+    public function content($content) : self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Add an attachment to the message
+     *
+     * @param array|RocketChatAttachment $attachment
+     *
+     * @return $this
+     */
+    public function attachment($attachment) : self
+    {
+        if(!($attachment instanceof RocketChatAttachment)) {
+            $attachment = new RocketChatAttachment($attachment);
+        }
+
+        $this->attachments[] = $attachment;
+
+        return $this;
+    }
+
+    /**
+     * Add multiple attachments to the message
+     *
+     * @param array $attachments
+     * @return $this
+     */
+    public function attachments(array $attachments) : self
+    {
+        foreach ($attachments as $attachment) {
+            $this->attachment($attachment);
+        }
+        return $this;
+    }
+
+    /**
+     * clear all attachments
+     *
+     * @return $this
+     */
+    public function clearAttachments() : self
+    {
+        $this->attachments = [];
 
         return $this;
     }
@@ -92,11 +203,22 @@ final class RocketChatMessage
      *
      * @return array
      */
-    public function toArray(): array
+    public function toArray() : array
     {
-        return array_filter([
+        $attachments = [];
+        foreach ($this->attachments as $attachment) {
+            $attachments[] = $attachment->toArray();
+        }
+
+        $message = array_filter([
             'text' => $this->content,
-            'channel' => $this->channel,
+            'channel' => $this->room,
+            'alias' => $this->alias,
+            'emoji' => $this->emoji,
+            'avatar' => $this->avatar,
+            'attachments' => $attachments
         ]);
+
+        return $message;
     }
 }
