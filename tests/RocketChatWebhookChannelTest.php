@@ -46,6 +46,32 @@ final class RocketChatWebhookChannelTest extends TestCase
     }
 
     /** @test */
+    public function it_handles_generic_errors(): void
+    {
+        $client = Mockery::mock(Client::class);
+        $this->expectException(CouldNotSendNotification::class);
+
+        $apiBaseUrl = 'http://localhost:3000';
+        $token = ':token';
+        $channel = ':channel';
+
+        $client->shouldReceive('post')->once()
+            ->with(
+                "{$apiBaseUrl}/hooks/{$token}",
+                [
+                    'json' => [
+                        'text' => 'hello',
+                        'channel' => $channel,
+                    ],
+                ]
+            )->andThrow(new \Exception('Test'));
+
+        $rocketChat = new RocketChat($client, $apiBaseUrl, $token, $channel);
+        $channel = new RocketChatWebhookChannel($rocketChat);
+        $channel->send(new TestNotifiable(), new TestNotification());
+    }
+
+    /** @test */
     public function it_does_not_send_a_message_when_channel_missed(): void
     {
         $this->expectException(CouldNotSendNotification::class);
