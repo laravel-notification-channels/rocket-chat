@@ -111,9 +111,10 @@ public function routeNotificationForRocketChat(): string
 
 `clearAttachments()`: This will remove all attachments.
 
-
 ### Adding Attachment
+
 There are several ways to add one ore more attachments to a message
+
 ```php
 public function toRocketChat($notifiable)
 {
@@ -130,8 +131,8 @@ public function toRocketChat($notifiable)
         ]);   
 }
 ```
-#### Available methods
 
+#### Available methods
 
 `color()`: The color you want the order on the left side to be, any value background-css supports.
 
@@ -166,6 +167,7 @@ public function toRocketChat($notifiable)
 `videoUrl()`: Video file to play, only supports what html video does.
 
 `fields()`: An array of Attachment Field Objects.
+
 ```php
 [
     [
@@ -180,7 +182,7 @@ public function toRocketChat($notifiable)
     ],
 
 ];   
-
+```
 
 ## Changelog
 

@@ -7,7 +7,7 @@ namespace NotificationChannels\RocketChat\Test;
 use NotificationChannels\RocketChat\RocketChatAttachment;
 use PHPUnit\Framework\TestCase;
 
-class RocketChatAttachmentTest extends TestCase
+final class RocketChatAttachmentTest extends TestCase
 {
     /** @test */
     public function it_can_accept_a_config_when_constructing_an_attachment(): void
