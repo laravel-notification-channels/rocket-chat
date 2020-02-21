@@ -2,7 +2,6 @@
 
 namespace NotificationChannels\RocketChat;
 
-use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Str;
 
 /**
