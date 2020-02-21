@@ -28,7 +28,7 @@ final class RocketChat
      * @param  string  $channel
      * @return void
      */
-    public function __construct(HttpClient $http, $url, $token, $channel)
+    public function __construct(HttpClient $http, string $url, string $token, string $channel)
     {
         $this->http = $http;
         $this->url = rtrim($url, '/');
@@ -69,11 +69,11 @@ final class RocketChat
     /**
      * Send a message.
      *
-     * @param  string|int  $to
+     * @param  string  $to
      * @param  array  $message
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function sendMessage($to, $message): ResponseInterface
+    public function sendMessage(string $to, array $message): ResponseInterface
     {
         $url = sprintf('%s/hooks/%s', $this->url, $this->token);
 
@@ -91,7 +91,7 @@ final class RocketChat
      * @param  array  $options
      * @return \Psr\Http\Message\ResponseInterface
      */
-    private function post($url, $options): ResponseInterface
+    private function post(string $url, array $options): ResponseInterface
     {
         return $this->http->post($url, $options);
     }
