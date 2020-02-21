@@ -5,12 +5,10 @@ namespace NotificationChannels\RocketChat;
 use Illuminate\Support\Str;
 
 /**
- * Class RocketChatAttachment
- * @package NotificationChannels\RocketChat
+ * Class RocketChatAttachment.
  */
 class RocketChatAttachment
 {
-
     /**
      * @var string The color you want the order on the left side to be, any value background-css supports.
      */
@@ -88,9 +86,8 @@ class RocketChatAttachment
         }
     }
 
-
     /**
-     * Create a new instance of RocketChatAttachment
+     * Create a new instance of RocketChatAttachment.
      *
      * @param array|null $config
      * @return RocketChatAttachment
@@ -101,7 +98,7 @@ class RocketChatAttachment
     }
 
     /**
-     * set attachment data form array
+     * set attachment data form array.
      *
      * @param array $data
      */
@@ -109,7 +106,7 @@ class RocketChatAttachment
     {
         foreach ($data as $key => $value) {
             $method = Str::camel($key);
-            if(!method_exists($this, $method)) {
+            if (! method_exists($this, $method)) {
                 continue;
             }
             $this->{$method}($value);
@@ -123,6 +120,7 @@ class RocketChatAttachment
     public function color(string $color): self
     {
         $this->color = $color;
+
         return $this;
     }
 
@@ -133,6 +131,7 @@ class RocketChatAttachment
     public function text(string $text): self
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -142,15 +141,16 @@ class RocketChatAttachment
      */
     public function timestamp($timestamp): self
     {
-        if(!($timestamp instanceof \DateTime) && !is_string($timestamp)) {
+        if (! ($timestamp instanceof \DateTime) && ! is_string($timestamp)) {
             throw new \InvalidArgumentException('Timestamp must be string or DateTime, '.gettype($timestamp).' given.');
         }
 
-        if($timestamp instanceof \DateTime) {
+        if ($timestamp instanceof \DateTime) {
             $date = clone $timestamp;
             $timestamp = $date->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d\TH:i:s.v\Z');
         }
         $this->timestamp = $timestamp;
+
         return $this;
     }
 
@@ -161,6 +161,7 @@ class RocketChatAttachment
     public function thumbnailUrl(string $thumbnailUrl): self
     {
         $this->thumbnailUrl = $thumbnailUrl;
+
         return $this;
     }
 
@@ -171,6 +172,7 @@ class RocketChatAttachment
     public function messageLink(string $messageLink): self
     {
         $this->messageLink = $messageLink;
+
         return $this;
     }
 
@@ -181,6 +183,7 @@ class RocketChatAttachment
     public function collapsed(bool $collapsed): self
     {
         $this->collapsed = $collapsed;
+
         return $this;
     }
 
@@ -195,6 +198,7 @@ class RocketChatAttachment
         $this->authorName($name);
         $this->authorLink($link);
         $this->authorIcon($icon);
+
         return $this;
     }
 
@@ -205,6 +209,7 @@ class RocketChatAttachment
     public function authorName(string $authorName): self
     {
         $this->authorName = $authorName;
+
         return $this;
     }
 
@@ -215,6 +220,7 @@ class RocketChatAttachment
     public function authorLink(string $authorLink): self
     {
         $this->authorLink = $authorLink;
+
         return $this;
     }
 
@@ -225,6 +231,7 @@ class RocketChatAttachment
     public function authorIcon(string $authorIcon): self
     {
         $this->authorIcon = $authorIcon;
+
         return $this;
     }
 
@@ -235,6 +242,7 @@ class RocketChatAttachment
     public function title(string $title): self
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -245,6 +253,7 @@ class RocketChatAttachment
     public function titleLink(string $titleLink): self
     {
         $this->titleLink = $titleLink;
+
         return $this;
     }
 
@@ -255,6 +264,7 @@ class RocketChatAttachment
     public function titleLinkDownload(bool $titleLinkDownload): self
     {
         $this->titleLinkDownload = $titleLinkDownload;
+
         return $this;
     }
 
@@ -265,6 +275,7 @@ class RocketChatAttachment
     public function imageUrl(string $imageUrl): self
     {
         $this->imageUrl = $imageUrl;
+
         return $this;
     }
 
@@ -275,6 +286,7 @@ class RocketChatAttachment
     public function audioUrl(string $audioUrl): self
     {
         $this->audioUrl = $audioUrl;
+
         return $this;
     }
 
@@ -285,6 +297,7 @@ class RocketChatAttachment
     public function videoUrl(string $videoUrl): self
     {
         $this->videoUrl = $videoUrl;
+
         return $this;
     }
 
@@ -295,16 +308,16 @@ class RocketChatAttachment
     public function fields(array $fields): self
     {
         $this->fields = $fields;
+
         return $this;
     }
-
 
     /**
      * Get an array representation of the RocketChatAttachment.
      *
      * @return array
      */
-    public function toArray() : array
+    public function toArray(): array
     {
         $message = array_filter([
             'color' => $this->color,
@@ -327,6 +340,4 @@ class RocketChatAttachment
 
         return $message;
     }
-
-
 }

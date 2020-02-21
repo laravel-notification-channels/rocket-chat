@@ -87,6 +87,7 @@ class RocketChatMessageTest extends TestCase
         $message = (new RocketChatMessage())->attachment(['title' => 'test']);
         $this->assertInstanceOf(RocketChatAttachment::class, $message->attachments[0]);
     }
+
     /** @test */
     public function it_can_set_multiple_attachments()
     {
@@ -111,6 +112,4 @@ class RocketChatMessageTest extends TestCase
         $message->clearAttachments();
         $this->assertCount(0, $message->attachments);
     }
-
-
 }

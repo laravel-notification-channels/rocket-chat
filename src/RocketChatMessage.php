@@ -46,13 +46,11 @@ class RocketChatMessage
      */
     public $avatar = '';
 
-
     /**
-     * Attachments of the message
+     * Attachments of the message.
      *
      * @var RocketChatAttachment[]
      */
-
     public $attachments = [];
 
     /**
@@ -61,7 +59,7 @@ class RocketChatMessage
      * @param  string  $content
      * @return static
      */
-    public static function create($content = '') : self
+    public static function create($content = ''): self
     {
         return new static($content);
     }
@@ -82,7 +80,7 @@ class RocketChatMessage
      * @param  string  $accessToken
      * @return $this
      */
-    public function from($accessToken) : self
+    public function from($accessToken): self
     {
         $this->from = $accessToken;
 
@@ -95,7 +93,7 @@ class RocketChatMessage
      * @param  string $room
      * @return $this
      */
-    public function to($room) : self
+    public function to($room): self
     {
         $this->room = $room;
 
@@ -108,7 +106,7 @@ class RocketChatMessage
      * @param  string $alias
      * @return $this
      */
-    public function alias(string $alias) : self
+    public function alias(string $alias): self
     {
         $this->alias = $alias;
 
@@ -121,7 +119,7 @@ class RocketChatMessage
      * @param  string $emoji
      * @return $this
      */
-    public function emoji(string $emoji) : self
+    public function emoji(string $emoji): self
     {
         $this->emoji = $emoji;
 
@@ -134,7 +132,7 @@ class RocketChatMessage
      * @param  string $avatar
      * @return $this
      */
-    public function avatar(string $avatar) : self
+    public function avatar(string $avatar): self
     {
         $this->avatar = $avatar;
 
@@ -147,7 +145,7 @@ class RocketChatMessage
      * @param  string  $content
      * @return $this
      */
-    public function content($content) : self
+    public function content($content): self
     {
         $this->content = $content;
 
@@ -155,15 +153,15 @@ class RocketChatMessage
     }
 
     /**
-     * Add an attachment to the message
+     * Add an attachment to the message.
      *
      * @param array|RocketChatAttachment $attachment
      *
      * @return $this
      */
-    public function attachment($attachment) : self
+    public function attachment($attachment): self
     {
-        if(!($attachment instanceof RocketChatAttachment)) {
+        if (! ($attachment instanceof RocketChatAttachment)) {
             $attachment = new RocketChatAttachment($attachment);
         }
 
@@ -173,25 +171,26 @@ class RocketChatMessage
     }
 
     /**
-     * Add multiple attachments to the message
+     * Add multiple attachments to the message.
      *
      * @param array $attachments
      * @return $this
      */
-    public function attachments(array $attachments) : self
+    public function attachments(array $attachments): self
     {
         foreach ($attachments as $attachment) {
             $this->attachment($attachment);
         }
+
         return $this;
     }
 
     /**
-     * clear all attachments
+     * clear all attachments.
      *
      * @return $this
      */
-    public function clearAttachments() : self
+    public function clearAttachments(): self
     {
         $this->attachments = [];
 
@@ -203,7 +202,7 @@ class RocketChatMessage
      *
      * @return array
      */
-    public function toArray() : array
+    public function toArray(): array
     {
         $attachments = [];
         foreach ($this->attachments as $attachment) {
@@ -216,7 +215,7 @@ class RocketChatMessage
             'alias' => $this->alias,
             'emoji' => $this->emoji,
             'avatar' => $this->avatar,
-            'attachments' => $attachments
+            'attachments' => $attachments,
         ]);
 
         return $message;

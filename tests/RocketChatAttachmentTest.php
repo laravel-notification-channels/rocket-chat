@@ -3,7 +3,6 @@
 namespace NotificationChannels\RocketChat\Test;
 
 use NotificationChannels\RocketChat\RocketChatAttachment;
-use NotificationChannels\RocketChat\RocketChatMessage;
 use PHPUnit\Framework\TestCase;
 
 class RocketChatAttachmentTest extends TestCase
@@ -23,6 +22,7 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['title' => 'test123'], $attachment->toArray());
     }
+
     /** @test */
     public function it_returns_an_empty_array_if_not_configured()
     {
@@ -30,8 +30,6 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals([], $attachment->toArray());
     }
-
-
 
     /** @test */
     public function it_can_set_the_color()
@@ -41,15 +39,16 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['color' => '#FFFFFF'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_text()
     {
         $attachment = new RocketChatAttachment();
         $attachment->text('test123');
 
-
         $this->assertEquals(['text' => 'test123'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_timestamp()
     {
@@ -58,6 +57,7 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['ts' => '2020-02-19T19:00:00.000Z'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_timestamp_as_datetime()
     {
@@ -65,9 +65,9 @@ class RocketChatAttachmentTest extends TestCase
         $attachment = new RocketChatAttachment();
         $attachment->timestamp($date);
 
-
         $this->assertEquals(['ts' => '2020-02-19T19:00:00.000Z'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_thumb_url()
     {
@@ -76,6 +76,7 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['thumb_url' => 'test123'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_message_link()
     {
@@ -84,6 +85,7 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['message_link' => 'test123'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_collapsed()
     {
@@ -92,6 +94,7 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['collapsed' => true], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_author_name()
     {
@@ -100,6 +103,7 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['author_name' => 'author'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_author_link()
     {
@@ -122,12 +126,12 @@ class RocketChatAttachmentTest extends TestCase
     public function it_can_set_the_author()
     {
         $attachment = new RocketChatAttachment();
-        $attachment->author('aname', 'alink','aicon');
+        $attachment->author('aname', 'alink', 'aicon');
 
         $this->assertEquals([
             'author_name' => 'aname',
             'author_link' => 'alink',
-            'author_icon' => 'aicon'
+            'author_icon' => 'aicon',
         ], $attachment->toArray());
     }
 
@@ -175,6 +179,7 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['audio_url' => 'test123'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_video_url()
     {
@@ -183,20 +188,20 @@ class RocketChatAttachmentTest extends TestCase
 
         $this->assertEquals(['video_url' => 'test123'], $attachment->toArray());
     }
+
     /** @test */
     public function it_can_set_the_fields()
     {
-
         $fields = [
             [
                 'short' => false,
                 'title' => 'test1',
-                'value' => 'value1'
+                'value' => 'value1',
             ],
             [
                 'short' => true,
                 'title' => 'test2',
-                'value' => 'value2'
+                'value' => 'value2',
             ],
         ];
         $attachment = new RocketChatAttachment();
@@ -211,6 +216,4 @@ class RocketChatAttachmentTest extends TestCase
         $attachment = new RocketChatAttachment(['notExisting']);
         $this->assertEquals([], $attachment->toArray());
     }
-
-
 }

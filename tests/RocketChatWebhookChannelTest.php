@@ -44,6 +44,7 @@ final class RocketChatWebhookChannelTest extends TestCase
         $channel = new RocketChatWebhookChannel($rocketChat);
         $channel->send(new TestNotifiable(), new TestNotification());
     }
+
     /** @test */
     public function it_handles_generic_errors()
     {
