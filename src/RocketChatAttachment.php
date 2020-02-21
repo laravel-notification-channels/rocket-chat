@@ -6,9 +6,6 @@ namespace NotificationChannels\RocketChat;
 
 use Illuminate\Support\Str;
 
-/**
- * Class RocketChatAttachment.
- */
 class RocketChatAttachment
 {
     /**
@@ -20,58 +17,72 @@ class RocketChatAttachment
      * @var string The text to display for this attachment, it is different than the message’s text.
      */
     protected $text = '';
+
     /**
      * @var string Displays the time next to the text portion.
      */
     protected $timestamp = '';
+
     /**
      * @var string An image that displays to the left of the text, looks better when this is relatively small.
      */
     protected $thumbnailUrl = '';
+
     /**
      * @var string Only applicable if the ts is provided, as it makes the time clickable to this link.
      */
     protected $messageLink = '';
+
     /**
      * @var bool Causes the image, audio, and video sections to be hiding when collapsed is true.
      */
     protected $collapsed = false;
+
     /**
      * @var string Name of the author.
      */
     protected $authorName = '';
+
     /**
      * @var string Providing this makes the author name clickable and points to this link.
      */
     protected $authorLink = '';
+
     /**
      * @var string Displays a tiny icon to the left of the Author’s name.
      */
     protected $authorIcon = '';
+
     /**
      * @var string Title to display for this attachment, displays under the author.
      */
     protected $title = '';
+
     /**
      * @var string Providing this makes the title clickable, pointing to this link.
      */
     protected $titleLink = '';
+
     /**
      * @var bool When this is true, a download icon appears and clicking this saves the link to file.
      */
     protected $titleLinkDownload = false;
+
     /**
      * @var string The image to display, will be “big” and easy to see.
      */
     protected $imageUrl = '';
+
     /**
      * @var string Audio file to play, only supports what html audio does.
      */
     protected $audioUrl = '';
+
     /**
      * @var string Video file to play, only supports what html video does.
      */
     protected $videoUrl = '';
+
     /**
      * @var array An array of Attachment Field Objects.
      */
@@ -79,6 +90,7 @@ class RocketChatAttachment
 
     /**
      * RocketChatAttachment constructor.
+     *
      * @param array|null $config
      */
     public function __construct(array $config = null)
@@ -100,7 +112,7 @@ class RocketChatAttachment
     }
 
     /**
-     * set attachment data form array.
+     * Set attachment data form array.
      *
      * @param array $data
      */
@@ -128,7 +140,7 @@ class RocketChatAttachment
 
     /**
      * @param string $text
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function text(string $text): self
     {
@@ -139,7 +151,7 @@ class RocketChatAttachment
 
     /**
      * @param string|\DateTime $timestamp
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function timestamp($timestamp): self
     {
@@ -158,7 +170,7 @@ class RocketChatAttachment
 
     /**
      * @param string $thumbnailUrl
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function thumbnailUrl(string $thumbnailUrl): self
     {
@@ -169,7 +181,7 @@ class RocketChatAttachment
 
     /**
      * @param string $messageLink
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function messageLink(string $messageLink): self
     {
@@ -180,7 +192,7 @@ class RocketChatAttachment
 
     /**
      * @param bool $collapsed
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function collapsed(bool $collapsed): self
     {
@@ -193,7 +205,7 @@ class RocketChatAttachment
      * @param string $name
      * @param string $link
      * @param string $icon
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function author(string $name, string $link = '', string $icon = ''): self
     {
@@ -206,7 +218,7 @@ class RocketChatAttachment
 
     /**
      * @param string $authorName
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function authorName(string $authorName): self
     {
@@ -217,7 +229,7 @@ class RocketChatAttachment
 
     /**
      * @param string $authorLink
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function authorLink(string $authorLink): self
     {
@@ -228,7 +240,7 @@ class RocketChatAttachment
 
     /**
      * @param string $authorIcon
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function authorIcon(string $authorIcon): self
     {
@@ -239,7 +251,7 @@ class RocketChatAttachment
 
     /**
      * @param string $title
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function title(string $title): self
     {
@@ -250,7 +262,7 @@ class RocketChatAttachment
 
     /**
      * @param string $titleLink
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function titleLink(string $titleLink): self
     {
@@ -261,7 +273,7 @@ class RocketChatAttachment
 
     /**
      * @param bool $titleLinkDownload
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function titleLinkDownload(bool $titleLinkDownload): self
     {
@@ -272,7 +284,7 @@ class RocketChatAttachment
 
     /**
      * @param string $imageUrl
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function imageUrl(string $imageUrl): self
     {
@@ -283,7 +295,7 @@ class RocketChatAttachment
 
     /**
      * @param string $audioUrl
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function audioUrl(string $audioUrl): self
     {
@@ -294,7 +306,7 @@ class RocketChatAttachment
 
     /**
      * @param string $videoUrl
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function videoUrl(string $videoUrl): self
     {
@@ -305,7 +317,7 @@ class RocketChatAttachment
 
     /**
      * @param array $fields
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function fields(array $fields): self
     {
@@ -321,7 +333,7 @@ class RocketChatAttachment
      */
     public function toArray(): array
     {
-        $message = array_filter([
+        return array_filter([
             'color' => $this->color,
             'text' => $this->text,
             'ts' => $this->timestamp,
@@ -339,7 +351,5 @@ class RocketChatAttachment
             'video_url' => $this->videoUrl,
             'fields' => $this->fields,
         ]);
-
-        return $message;
     }
 }
