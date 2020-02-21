@@ -46,7 +46,7 @@ final class RocketChatWebhookChannelTest extends TestCase
     }
 
     /** @test */
-    public function it_handles_generic_errors()
+    public function it_handles_generic_errors(): void
     {
         $client = Mockery::mock(Client::class);
         $this->expectException(CouldNotSendNotification::class);

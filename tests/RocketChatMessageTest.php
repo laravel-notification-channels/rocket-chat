@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 class RocketChatMessageTest extends TestCase
 {
     /** @test */
-    public function it_can_accept_a_content_when_constructing_a_message()
+    public function it_can_accept_a_content_when_constructing_a_message(): void
     {
         $message = new RocketChatMessage('hello');
 
@@ -17,7 +17,7 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_accept_a_content_when_creating_a_message()
+    public function it_can_accept_a_content_when_creating_a_message(): void
     {
         $message = RocketChatMessage::create('hello');
 
@@ -25,7 +25,7 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_content()
+    public function it_can_set_the_content(): void
     {
         $message = (new RocketChatMessage())->content('hello');
 
@@ -33,15 +33,15 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_room()
+    public function it_can_set_the_channel(): void
     {
-        $message = (new RocketChatMessage())->to('room');
+        $message = (new RocketChatMessage())->to('channel');
 
-        $this->assertEquals('room', $message->room);
+        $this->assertEquals('channel', $message->channel);
     }
 
     /** @test */
-    public function it_can_set_the_from()
+    public function it_can_set_the_from(): void
     {
         $message = (new RocketChatMessage())->from('token');
 
@@ -49,7 +49,7 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_alias()
+    public function it_can_set_the_alias(): void
     {
         $message = (new RocketChatMessage())->alias('alias');
 
@@ -57,7 +57,7 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_emoji()
+    public function it_can_set_the_emoji(): void
     {
         $message = (new RocketChatMessage())->emoji(':emoji:');
 
@@ -65,7 +65,7 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_avatar()
+    public function it_can_set_the_avatar(): void
     {
         $message = (new RocketChatMessage())->avatar('avatar_img');
 
@@ -73,7 +73,7 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_attachment()
+    public function it_can_set_attachment(): void
     {
         $attachment = RocketChatAttachment::create(['title' => 'test']);
         $message = (new RocketChatMessage())->attachment($attachment);
@@ -82,14 +82,14 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_attachment_as_array()
+    public function it_can_set_attachment_as_array(): void
     {
         $message = (new RocketChatMessage())->attachment(['title' => 'test']);
         $this->assertInstanceOf(RocketChatAttachment::class, $message->attachments[0]);
     }
 
     /** @test */
-    public function it_can_set_multiple_attachments()
+    public function it_can_set_multiple_attachments(): void
     {
         $message = (new RocketChatMessage())->attachments([
             RocketChatAttachment::create(),
@@ -101,7 +101,7 @@ class RocketChatMessageTest extends TestCase
     }
 
     /** @test */
-    public function it_can_clear_attachments()
+    public function it_can_clear_attachments(): void
     {
         $message = (new RocketChatMessage())->attachments([
             RocketChatAttachment::create(),

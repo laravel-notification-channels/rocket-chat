@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class RocketChatAttachmentTest extends TestCase
 {
     /** @test */
-    public function it_can_accept_a_config_when_constructing_an_attachment()
+    public function it_can_accept_a_config_when_constructing_an_attachment(): void
     {
         $attachment = new RocketChatAttachment(['title' => 'test123']);
 
@@ -16,7 +16,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_accept_a_config_when_creating_an_attachment()
+    public function it_can_accept_a_config_when_creating_an_attachment(): void
     {
         $attachment = RocketChatAttachment::create(['title' => 'test123']);
 
@@ -24,7 +24,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_an_empty_array_if_not_configured()
+    public function it_returns_an_empty_array_if_not_configured(): void
     {
         $attachment = new RocketChatAttachment();
 
@@ -32,7 +32,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_color()
+    public function it_can_set_the_color(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->color('#FFFFFF');
@@ -41,7 +41,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_text()
+    public function it_can_set_the_text(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->text('test123');
@@ -50,7 +50,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_timestamp()
+    public function it_can_set_the_timestamp(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->timestamp('2020-02-19T19:00:00.000Z');
@@ -59,7 +59,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_timestamp_as_datetime()
+    public function it_can_set_the_timestamp_as_datetime(): void
     {
         $date = \DateTime::createFromFormat('Y-m-d H:i:s.u', '2020-02-19 19:00:00.000');
         $attachment = new RocketChatAttachment();
@@ -69,7 +69,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_thumb_url()
+    public function it_can_set_the_thumb_url(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->thumbnailUrl('test123');
@@ -78,7 +78,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_message_link()
+    public function it_can_set_the_message_link(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->messageLink('test123');
@@ -87,7 +87,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_collapsed()
+    public function it_can_set_the_collapsed(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->collapsed(true);
@@ -96,7 +96,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_author_name()
+    public function it_can_set_the_author_name(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->authorName('author');
@@ -105,7 +105,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_author_link()
+    public function it_can_set_the_author_link(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->authorLink('test123');
@@ -114,7 +114,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_author_icon()
+    public function it_can_set_the_author_icon(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->authorIcon('test123');
@@ -123,7 +123,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_author()
+    public function it_can_set_the_author(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->author('aname', 'alink', 'aicon');
@@ -136,7 +136,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_title()
+    public function it_can_set_the_title(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->title('test123');
@@ -145,7 +145,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_title_link()
+    public function it_can_set_the_title_link(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->titleLink('test123');
@@ -154,7 +154,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_title_link_download()
+    public function it_can_set_the_title_link_download(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->titleLinkDownload(true);
@@ -163,7 +163,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_image_url()
+    public function it_can_set_the_image_url(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->imageUrl('test123');
@@ -172,7 +172,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_audio_url()
+    public function it_can_set_the_audio_url(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->audioUrl('test123');
@@ -181,7 +181,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_video_url()
+    public function it_can_set_the_video_url(): void
     {
         $attachment = new RocketChatAttachment();
         $attachment->videoUrl('test123');
@@ -190,7 +190,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_the_fields()
+    public function it_can_set_the_fields(): void
     {
         $fields = [
             [
@@ -211,7 +211,7 @@ class RocketChatAttachmentTest extends TestCase
     }
 
     /** @test */
-    public function it_cannot_set_unknown_field()
+    public function it_cannot_set_unknown_field(): void
     {
         $attachment = new RocketChatAttachment(['notExisting']);
         $this->assertEquals([], $attachment->toArray());

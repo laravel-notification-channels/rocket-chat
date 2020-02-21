@@ -56,7 +56,7 @@ class RocketChatMessage
     /**
      * Create a new instance of RocketChatMessage.
      *
-     * @param  string  $content
+     * @param  string $content
      * @return static
      */
     public static function create($content = ''): self
@@ -67,7 +67,7 @@ class RocketChatMessage
     /**
      * Create a new instance of RocketChatMessage.
      *
-     * @param $content
+     * @param string $content
      */
     public function __construct($content = '')
     {
@@ -88,7 +88,7 @@ class RocketChatMessage
     }
 
     /**
-     * Set the RocketChat room the message should be sent to.
+     * Set the RocketChat channel the message should be sent to.
      *
      * @param  string $channel
      * @return $this
@@ -211,7 +211,7 @@ class RocketChatMessage
 
         $message = array_filter([
             'text' => $this->content,
-            'channel' => $this->room,
+            'channel' => $this->channel,
             'alias' => $this->alias,
             'emoji' => $this->emoji,
             'avatar' => $this->avatar,
