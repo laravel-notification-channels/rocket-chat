@@ -53,7 +53,7 @@ final class RocketChatWebhookChannelTest extends TestCase
 
         $apiBaseUrl = 'http://localhost:3000';
         $token = ':token';
-        $room = ':room';
+        $channel = ':channel';
 
         $client->shouldReceive('post')->once()
             ->with(
@@ -61,12 +61,12 @@ final class RocketChatWebhookChannelTest extends TestCase
                 [
                     'json' => [
                         'text' => 'hello',
-                        'channel' => $room,
+                        'channel' => $channel,
                     ],
                 ]
             )->andThrow(new \Exception('Test'));
 
-        $rocketChat = new RocketChat($client, $apiBaseUrl, $token, $room);
+        $rocketChat = new RocketChat($client, $apiBaseUrl, $token, $channel);
         $channel = new RocketChatWebhookChannel($rocketChat);
         $channel->send(new TestNotifiable(), new TestNotification());
     }
