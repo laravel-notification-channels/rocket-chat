@@ -62,22 +62,22 @@ class RocketChatAttachment
     /**
      * RocketChatAttachment constructor.
      *
-     * @param array $config
+     * @param array $data
      */
-    public function __construct(array $config = [])
+    public function __construct(array $data = [])
     {
-        $this->setFromArray($config);
+        $this->setPropertiesFromArray($data);
     }
 
     /**
      * Create a new instance of RocketChatAttachment.
      *
-     * @param array $config
+     * @param array $data
      * @return RocketChatAttachment
      */
-    public static function make(array $config = [])
+    public static function make(array $data = [])
     {
-        return new self($config);
+        return new self($data);
     }
 
     /**
@@ -307,18 +307,18 @@ class RocketChatAttachment
     }
 
     /**
-     * Set attachment data form array.
+     * Set attachment data from array.
      *
      * @param array $data
      */
-    protected function setFromArray(array $data)
+    private function setPropertiesFromArray(array $data)
     {
         foreach ($data as $key => $value) {
-            $method = Str::camel($key);
-            if (! method_exists($this, $method)) {
+            $methodName = Str::camel($key);
+            if (! method_exists($this, $methodName)) {
                 continue;
             }
-            $this->{$method}($value);
+            $this->{$methodName}($value);
         }
     }
 }
