@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NotificationChannels\RocketChat\Test;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
@@ -23,7 +23,7 @@ final class RocketChatWebhookChannelTest extends TestCase
     /** @test */
     public function it_can_send_a_notification(): void
     {
-        $client = Mockery::mock(Client::class);
+        $client = Mockery::mock(GuzzleHttpClient::class);
 
         $apiBaseUrl = 'http://localhost:3000';
         $token = ':token';
@@ -48,7 +48,7 @@ final class RocketChatWebhookChannelTest extends TestCase
     /** @test */
     public function it_handles_generic_errors(): void
     {
-        $client = Mockery::mock(Client::class);
+        $client = Mockery::mock(GuzzleHttpClient::class);
         $this->expectException(CouldNotSendNotification::class);
 
         $apiBaseUrl = 'http://localhost:3000';
@@ -76,7 +76,7 @@ final class RocketChatWebhookChannelTest extends TestCase
     {
         $this->expectException(CouldNotSendNotification::class);
 
-        $rocketChat = new RocketChat(new Client(), '', '', '');
+        $rocketChat = new RocketChat(new GuzzleHttpClient(), '', '', '');
         $channel = new RocketChatWebhookChannel($rocketChat);
         $channel->send(new TestNotifiable(), new TestNotificationWithMissedChannel());
     }
@@ -86,7 +86,7 @@ final class RocketChatWebhookChannelTest extends TestCase
     {
         $this->expectException(CouldNotSendNotification::class);
 
-        $rocketChat = new RocketChat(new Client(), '', '', '');
+        $rocketChat = new RocketChat(new GuzzleHttpClient(), '', '', '');
         $channel = new RocketChatWebhookChannel($rocketChat);
         $channel->send(new TestNotifiable(), new TestNotificationWithMissedFrom());
     }

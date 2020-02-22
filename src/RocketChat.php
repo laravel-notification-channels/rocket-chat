@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NotificationChannels\RocketChat;
 
 use GuzzleHttp\Client as HttpClient;
-use Psr\Http\Message\ResponseInterface;
 
 final class RocketChat
 {
@@ -37,21 +36,11 @@ final class RocketChat
     }
 
     /**
-     * Returns RocketChat base url.
-     *
-     * @return string
-     */
-    public function url(): string
-    {
-        return $this->url;
-    }
-
-    /**
      * Returns RocketChat token.
      *
      * @return string
      */
-    public function token(): string
+    public function getToken(): string
     {
         return $this->token;
     }
@@ -61,7 +50,7 @@ final class RocketChat
      *
      * @return string|null
      */
-    public function defaultChannel(): ?string
+    public function getDefaultChannel(): ?string
     {
         return $this->defaultChannel;
     }
@@ -71,13 +60,13 @@ final class RocketChat
      *
      * @param  string  $to
      * @param  array  $message
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return void
      */
-    public function sendMessage(string $to, array $message): ResponseInterface
+    public function sendMessage(string $to, array $message): void
     {
         $url = sprintf('%s/hooks/%s', $this->url, $this->token);
 
-        return $this->post($url, [
+        $this->post($url, [
             'json' => array_merge($message, [
                 'channel' => $to,
             ]),
@@ -89,10 +78,10 @@ final class RocketChat
      *
      * @param  string  $url
      * @param  array  $options
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return void
      */
-    private function post(string $url, array $options): ResponseInterface
+    private function post(string $url, array $options): void
     {
-        return $this->http->post($url, $options);
+        $this->http->post($url, $options);
     }
 }

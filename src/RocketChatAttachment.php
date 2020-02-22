@@ -11,50 +11,50 @@ use InvalidArgumentException;
 
 class RocketChatAttachment
 {
-    /** @var string The color you want the order on the left side to be, any value background-css supports. */
-    protected $color = '';
+    /** @var string|null The color you want the order on the left side to be, any value background-css supports. */
+    protected $color;
 
-    /** @var string The text to display for this attachment, it is different than the message’s text. */
-    protected $text = '';
+    /** @var string|null The text to display for this attachment, it is different than the message’s text. */
+    protected $text;
 
-    /** @var string Displays the time next to the text portion. */
-    protected $timestamp = '';
+    /** @var string|null Displays the time next to the text portion. */
+    protected $timestamp;
 
-    /** @var string An image that displays to the left of the text, looks better when this is relatively small. */
-    protected $thumbnailUrl = '';
+    /** @var string|null An image that displays to the left of the text, looks better when this is relatively small. */
+    protected $thumbnailUrl;
 
-    /** @var string Only applicable if the ts is provided, as it makes the time clickable to this link. */
-    protected $messageLink = '';
+    /** @var string|null Only applicable if the ts is provided, as it makes the time clickable to this link. */
+    protected $messageLink;
 
     /** @var bool Causes the image, audio, and video sections to be hiding when collapsed is true. */
     protected $collapsed = false;
 
-    /** @var string Name of the author. */
-    protected $authorName = '';
+    /** @var string|null Name of the author. */
+    protected $authorName;
 
-    /** @var string Providing this makes the author name clickable and points to this link. */
-    protected $authorLink = '';
+    /** @var string|null Providing this makes the author name clickable and points to this link. */
+    protected $authorLink;
 
-    /** @var string Displays a tiny icon to the left of the Author’s name. */
-    protected $authorIcon = '';
+    /** @var string|null Displays a tiny icon to the left of the Author’s name. */
+    protected $authorIcon;
 
-    /** @var string Title to display for this attachment, displays under the author. */
-    protected $title = '';
+    /** @var string|null Title to display for this attachment, displays under the author. */
+    protected $title;
 
-    /** @var string Providing this makes the title clickable, pointing to this link. */
-    protected $titleLink = '';
+    /** @var string|null Providing this makes the title clickable, pointing to this link. */
+    protected $titleLink;
 
     /** @var bool When this is true, a download icon appears and clicking this saves the link to file. */
     protected $titleLinkDownload = false;
 
-    /** @var string The image to display, will be “big” and easy to see. */
-    protected $imageUrl = '';
+    /** @var string|null The image to display, will be “big” and easy to see. */
+    protected $imageUrl;
 
-    /** @var string Audio file to play, only supports what html audio does. */
-    protected $audioUrl = '';
+    /** @var string|null Audio file to play, only supports what html audio does. */
+    protected $audioUrl;
 
-    /** @var string Video file to play, only supports what html video does. */
-    protected $videoUrl = '';
+    /** @var string|null Video file to play, only supports what html video does. */
+    protected $videoUrl;
 
     /** @var array An array of Attachment Field Objects. */
     protected $fields = [];
@@ -73,7 +73,7 @@ class RocketChatAttachment
      * Create a new instance of RocketChatAttachment.
      *
      * @param array $data
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public static function make(array $data = [])
     {
@@ -82,7 +82,7 @@ class RocketChatAttachment
 
     /**
      * @param string $color
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function color(string $color): self
     {

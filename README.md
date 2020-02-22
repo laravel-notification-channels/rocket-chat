@@ -101,7 +101,7 @@ public function routeNotificationForRocketChat(): string
 
 `alias()`:  This will cause the message’s name to appear as the given alias, but your username will still display.
 
-`emoji()`: This will make the avatar on this message be an emoji. (e.g. ":see_no_evil:")
+`emoji()`: This will make the avatar on this message be an emoji. (e.g. ':see_no_evil:')
 
 `avatar()`: This will make the avatar use the provided image url.
 
@@ -118,7 +118,7 @@ There are several ways to add one ore more attachments to a message
 ```php
 public function toRocketChat($notifiable)
 {
-    return RocketChatMessage::make("Test message")
+    return RocketChatMessage::make('Test message')
         ->to('channel_name') // optional if set in config
         ->from('webhook_token') // optional if set in config
         ->attachments([
