@@ -6,53 +6,25 @@ namespace NotificationChannels\RocketChat;
 
 class RocketChatMessage
 {
-    /**
-     * RocketChat channel id.
-     *
-     * @var string
-     */
+    /** @var string RocketChat channel id. */
     public $channel = '';
 
-    /**
-     * A user or app access token.
-     *
-     * @var string
-     */
+    /** @var string A user or app access token. */
     public $from = '';
 
-    /**
-     * The text content of the message.
-     *
-     * @var string
-     */
+    /** @var string The text content of the message. */
     public $content = '';
 
-    /**
-     * The alias name of the message.
-     *
-     * @var string
-     */
+    /** @var string The alias name of the message. */
     public $alias = '';
 
-    /**
-     * The avatar emoji of the message.
-     *
-     * @var string
-     */
+    /** @var string The avatar emoji of the message. */
     public $emoji = '';
 
-    /**
-     * The avatar image of the message.
-     *
-     * @var string
-     */
+    /** @var string The avatar image of the message. */
     public $avatar = '';
 
-    /**
-     * Attachments of the message.
-     *
-     * @var \NotificationChannels\RocketChat\RocketChatAttachment[]
-     */
+    /** @var \NotificationChannels\RocketChat\RocketChatAttachment[] Attachments of the message. */
     public $attachments = [];
 
     /**
@@ -175,7 +147,7 @@ class RocketChatMessage
     /**
      * Add multiple attachments to the message.
      *
-     * @param array $attachments
+     * @param array|\NotificationChannels\RocketChat\RocketChatAttachment[] $attachments
      * @return $this
      */
     public function attachments(array $attachments): self

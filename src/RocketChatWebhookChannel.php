@@ -12,11 +12,7 @@ use Psr\Http\Message\ResponseInterface;
 
 final class RocketChatWebhookChannel
 {
-    /**
-     * The HTTP client instance.
-     *
-     * @var \NotificationChannels\RocketChat\RocketChat
-     */
+    /** @var \NotificationChannels\RocketChat\RocketChat The HTTP client instance. */
     private $rocketChat;
 
     /**

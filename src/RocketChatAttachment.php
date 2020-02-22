@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace NotificationChannels\RocketChat;
 
+use DateTime;
+use DateTimeZone;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 class RocketChatAttachment
 {
@@ -123,13 +126,13 @@ class RocketChatAttachment
      */
     public function timestamp($timestamp): self
     {
-        if (! ($timestamp instanceof \DateTime) && ! is_string($timestamp)) {
-            throw new \InvalidArgumentException('Timestamp must be string or DateTime, '.gettype($timestamp).' given.');
+        if (! ($timestamp instanceof DateTime) && ! is_string($timestamp)) {
+            throw new InvalidArgumentException('Timestamp must be string or DateTime, '.gettype($timestamp).' given.');
         }
 
-        if ($timestamp instanceof \DateTime) {
+        if ($timestamp instanceof DateTime) {
             $date = clone $timestamp;
-            $timestamp = $date->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d\TH:i:s.v\Z');
+            $timestamp = $date->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d\TH:i:s.v\Z');
         }
         $this->timestamp = $timestamp;
 
