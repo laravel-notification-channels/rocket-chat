@@ -17,7 +17,8 @@ final class RocketChatServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app->when(RocketChatWebhookChannel::class)
+        $this->app
+            ->when(RocketChatWebhookChannel::class)
             ->needs(RocketChat::class)
             ->give(function () {
                 return new RocketChat(
