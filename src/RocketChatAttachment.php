@@ -11,50 +11,50 @@ use InvalidArgumentException;
 
 class RocketChatAttachment
 {
-    /** @var string The color you want the order on the left side to be, any value background-css supports. */
-    protected $color = '';
+    /** @var string|null The color you want the order on the left side to be, any value background-css supports. */
+    protected $color;
 
-    /** @var string The text to display for this attachment, it is different than the message’s text. */
-    protected $text = '';
+    /** @var string|null The text to display for this attachment, it is different than the message’s text. */
+    protected $text;
 
-    /** @var string Displays the time next to the text portion. */
-    protected $timestamp = '';
+    /** @var string|null Displays the time next to the text portion. */
+    protected $timestamp;
 
-    /** @var string An image that displays to the left of the text, looks better when this is relatively small. */
-    protected $thumbnailUrl = '';
+    /** @var string|null An image that displays to the left of the text, looks better when this is relatively small. */
+    protected $thumbnailUrl;
 
-    /** @var string Only applicable if the ts is provided, as it makes the time clickable to this link. */
-    protected $messageLink = '';
+    /** @var string|null Only applicable if the ts is provided, as it makes the time clickable to this link. */
+    protected $messageLink;
 
     /** @var bool Causes the image, audio, and video sections to be hiding when collapsed is true. */
     protected $collapsed = false;
 
-    /** @var string Name of the author. */
-    protected $authorName = '';
+    /** @var string|null Name of the author. */
+    protected $authorName;
 
-    /** @var string Providing this makes the author name clickable and points to this link. */
-    protected $authorLink = '';
+    /** @var string|null Providing this makes the author name clickable and points to this link. */
+    protected $authorLink;
 
-    /** @var string Displays a tiny icon to the left of the Author’s name. */
-    protected $authorIcon = '';
+    /** @var string|null Displays a tiny icon to the left of the Author’s name. */
+    protected $authorIcon;
 
-    /** @var string Title to display for this attachment, displays under the author. */
-    protected $title = '';
+    /** @var string|null Title to display for this attachment, displays under the author. */
+    protected $title;
 
-    /** @var string Providing this makes the title clickable, pointing to this link. */
-    protected $titleLink = '';
+    /** @var string|null Providing this makes the title clickable, pointing to this link. */
+    protected $titleLink;
 
     /** @var bool When this is true, a download icon appears and clicking this saves the link to file. */
     protected $titleLinkDownload = false;
 
-    /** @var string The image to display, will be “big” and easy to see. */
-    protected $imageUrl = '';
+    /** @var string|null The image to display, will be “big” and easy to see. */
+    protected $imageUrl;
 
-    /** @var string Audio file to play, only supports what html audio does. */
-    protected $audioUrl = '';
+    /** @var string|null Audio file to play, only supports what html audio does. */
+    protected $audioUrl;
 
-    /** @var string Video file to play, only supports what html video does. */
-    protected $videoUrl = '';
+    /** @var string|null Video file to play, only supports what html video does. */
+    protected $videoUrl;
 
     /** @var array An array of Attachment Field Objects. */
     protected $fields = [];
@@ -62,45 +62,27 @@ class RocketChatAttachment
     /**
      * RocketChatAttachment constructor.
      *
-     * @param array|null $config
+     * @param array $data
      */
-    public function __construct(array $config = null)
+    public function __construct(array $data = [])
     {
-        if ($config != null) {
-            $this->setFromArray($config);
-        }
+        $this->setPropertiesFromArray($data);
     }
 
     /**
      * Create a new instance of RocketChatAttachment.
      *
-     * @param array|null $config
-     * @return RocketChatAttachment
-     */
-    public static function create(array $config = null)
-    {
-        return new self($config);
-    }
-
-    /**
-     * Set attachment data form array.
-     *
      * @param array $data
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
-    protected function setFromArray(array $data)
+    public static function make(array $data = [])
     {
-        foreach ($data as $key => $value) {
-            $method = Str::camel($key);
-            if (! method_exists($this, $method)) {
-                continue;
-            }
-            $this->{$method}($value);
-        }
+        return new self($data);
     }
 
     /**
      * @param string $color
-     * @return RocketChatAttachment
+     * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function color(string $color): self
     {
@@ -134,6 +116,7 @@ class RocketChatAttachment
             $date = clone $timestamp;
             $timestamp = $date->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d\TH:i:s.v\Z');
         }
+
         $this->timestamp = $timestamp;
 
         return $this;
@@ -322,5 +305,24 @@ class RocketChatAttachment
             'video_url' => $this->videoUrl,
             'fields' => $this->fields,
         ]);
+    }
+
+    /**
+     * Set attachment data from array.
+     *
+     * @param array $data
+     * @return void
+     */
+    private function setPropertiesFromArray(array $data): void
+    {
+        foreach ($data as $key => $value) {
+            $methodName = Str::camel($key);
+
+            if (! method_exists($this, $methodName)) {
+                continue;
+            }
+
+            $this->{$methodName}($value);
+        }
     }
 }

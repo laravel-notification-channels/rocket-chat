@@ -17,7 +17,7 @@ final class CouldNotSendNotification extends RuntimeException
      */
     public static function missingTo(): self
     {
-        return new static('Notification was not sent. Channel identifier is missing.');
+        return new static('RocketChat notification was not sent. Channel identifier is missing.');
     }
 
     /**
@@ -27,7 +27,7 @@ final class CouldNotSendNotification extends RuntimeException
      */
     public static function missingFrom(): self
     {
-        return new static('Notification was not sent. Access token is missing.');
+        return new static('RocketChat notification was not sent. Access token is missing.');
     }
 
     /**
