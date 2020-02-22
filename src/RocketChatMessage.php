@@ -6,26 +6,26 @@ namespace NotificationChannels\RocketChat;
 
 class RocketChatMessage
 {
-    /** @var string RocketChat channel id. */
-    public $channel = '';
+    /** @var string|null RocketChat channel id. */
+    protected $channel = null;
 
-    /** @var string A user or app access token. */
-    public $from = '';
+    /** @var string|null A user or app access token. */
+    protected $from = null;
 
     /** @var string The text content of the message. */
-    public $content = '';
+    protected $content;
 
     /** @var string The alias name of the message. */
-    public $alias = '';
+    protected $alias;
 
     /** @var string The avatar emoji of the message. */
-    public $emoji = '';
+    protected $emoji;
 
     /** @var string The avatar image of the message. */
-    public $avatar = '';
+    protected $avatar;
 
     /** @var \NotificationChannels\RocketChat\RocketChatAttachment[] Attachments of the message. */
-    public $attachments = [];
+    protected $attachments = [];
 
     /**
      * Create a new instance of RocketChatMessage.
@@ -46,6 +46,16 @@ class RocketChatMessage
     public function __construct(string $content = '')
     {
         $this->content($content);
+    }
+
+    public function getChannel(): ?string
+    {
+        return $this->channel;
+    }
+
+    public function getFrom(): ?string
+    {
+        return $this->from;
     }
 
     /**

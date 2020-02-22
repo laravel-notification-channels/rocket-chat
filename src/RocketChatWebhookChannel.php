@@ -40,12 +40,12 @@ final class RocketChatWebhookChannel
         /** @var \NotificationChannels\RocketChat\RocketChatMessage $message */
         $message = $notification->toRocketChat($notifiable);
 
-        $to = $message->channel ?: $notifiable->routeNotificationFor('RocketChat');
+        $to = $message->getChannel() ?: $notifiable->routeNotificationFor('RocketChat');
         if (! $to = $to ?: $this->rocketChat->defaultChannel()) {
             throw CouldNotSendNotification::missingTo();
         }
 
-        if (! $from = $message->from ?: $this->rocketChat->token()) {
+        if (! $from = $message->getFrom() ?: $this->rocketChat->token()) {
             throw CouldNotSendNotification::missingFrom();
         }
 

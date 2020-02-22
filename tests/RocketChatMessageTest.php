@@ -13,49 +13,49 @@ final class RocketChatMessageTest extends TestCase
     /** @test */
     public function it_can_accept_a_content_when_constructing_a_message(): void
     {
-        $message = new RocketChatMessage('hello');
+        $message = new RocketChatMessage('test-content');
 
-        $this->assertEquals('hello', $message->content);
+        $this->assertSame(['text' => 'test-content'], $message->toArray());
     }
 
     /** @test */
     public function it_can_accept_a_content_when_creating_a_message(): void
     {
-        $message = RocketChatMessage::make('hello');
+        $message = RocketChatMessage::make('test-content');
 
-        $this->assertEquals('hello', $message->content);
+        $this->assertSame(['text' => 'test-content'], $message->toArray());
     }
 
     /** @test */
     public function it_can_set_the_content(): void
     {
-        $message = (new RocketChatMessage())->content('hello');
+        $message = (new RocketChatMessage())->content('test-content');
 
-        $this->assertEquals('hello', $message->content);
+        $this->assertSame(['text' => 'test-content'], $message->toArray());
     }
 
     /** @test */
     public function it_can_set_the_channel(): void
     {
-        $message = (new RocketChatMessage())->to('channel');
+        $message = (new RocketChatMessage())->to('test-channel');
 
-        $this->assertEquals('channel', $message->channel);
+        $this->assertSame('test-channel', $message->getChannel());
     }
 
     /** @test */
     public function it_can_set_the_from(): void
     {
-        $message = (new RocketChatMessage())->from('token');
+        $message = (new RocketChatMessage())->from('test-token');
 
-        $this->assertEquals('token', $message->from);
+        $this->assertSame('test-token', $message->getFrom());
     }
 
     /** @test */
     public function it_can_set_the_alias(): void
     {
-        $message = (new RocketChatMessage())->alias('alias');
+        $message = (new RocketChatMessage())->alias('test-alias');
 
-        $this->assertEquals('alias', $message->alias);
+        $this->assertSame(['alias' => 'test-alias'], $message->toArray());
     }
 
     /** @test */
@@ -63,7 +63,7 @@ final class RocketChatMessageTest extends TestCase
     {
         $message = (new RocketChatMessage())->emoji(':emoji:');
 
-        $this->assertEquals(':emoji:', $message->emoji);
+        $this->assertSame(['emoji' => ':emoji:'], $message->toArray());
     }
 
     /** @test */
@@ -71,7 +71,7 @@ final class RocketChatMessageTest extends TestCase
     {
         $message = (new RocketChatMessage())->avatar('avatar_img');
 
-        $this->assertEquals('avatar_img', $message->avatar);
+        $this->assertSame(['avatar' => 'avatar_img'], $message->toArray());
     }
 
     /** @test */
@@ -80,14 +80,15 @@ final class RocketChatMessageTest extends TestCase
         $attachment = RocketChatAttachment::make(['title' => 'test']);
         $message = (new RocketChatMessage())->attachment($attachment);
 
-        $this->assertSame($attachment, $message->attachments[0]);
+        $this->assertSame($attachment->toArray(), $message->toArray()['attachments'][0]);
     }
 
     /** @test */
     public function it_can_set_attachment_as_array(): void
     {
         $message = (new RocketChatMessage())->attachment(['title' => 'test']);
-        $this->assertInstanceOf(RocketChatAttachment::class, $message->attachments[0]);
+
+        $this->assertSame(['title' => 'test'], $message->toArray()['attachments'][0]);
     }
 
     /** @test */
@@ -98,8 +99,8 @@ final class RocketChatMessageTest extends TestCase
             RocketChatAttachment::make(),
             RocketChatAttachment::make(),
         ]);
-        $this->assertInstanceOf(RocketChatAttachment::class, $message->attachments[0]);
-        $this->assertCount(3, $message->attachments);
+
+        $this->assertCount(3, $message->toArray()['attachments']);
     }
 
     /** @test */
@@ -112,6 +113,7 @@ final class RocketChatMessageTest extends TestCase
         ]);
 
         $message->clearAttachments();
-        $this->assertCount(0, $message->attachments);
+
+        $this->assertArrayNotHasKey('attachments', $message->toArray());
     }
 }
