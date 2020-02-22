@@ -75,7 +75,7 @@ class TaskCompleted extends Notification
 
     public function toRocketChat($notifiable): RocketChatMessage
     {
-        return RocketChatMessage::create('Test message')
+        return RocketChatMessage::make('Test message')
             ->to('channel_name') // optional if set in config
             ->from('webhook_token'); // optional if set in config
     }
@@ -118,12 +118,12 @@ There are several ways to add one ore more attachments to a message
 ```php
 public function toRocketChat($notifiable)
 {
-    return RocketChatMessage::create("Test message")
+    return RocketChatMessage::make("Test message")
         ->to('channel_name') // optional if set in config
         ->from('webhook_token') // optional if set in config
         ->attachments([
-            RocketChatAttachment::create()->imageUrl('test'),
-            RocketChatAttachment::create(['image_url' => 'test']),
+            RocketChatAttachment::make()->imageUrl('test'),
+            RocketChatAttachment::make(['image_url' => 'test']),
             new RocketChatAttachment(['image_url' => 'test']),
             [
                 'image_url' => 'test'

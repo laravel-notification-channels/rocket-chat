@@ -20,7 +20,7 @@ final class RocketChatAttachmentTest extends TestCase
     /** @test */
     public function it_can_accept_a_config_when_creating_an_attachment(): void
     {
-        $attachment = RocketChatAttachment::create(['title' => 'test123']);
+        $attachment = RocketChatAttachment::make(['title' => 'test123']);
 
         $this->assertEquals(['title' => 'test123'], $attachment->toArray());
     }

@@ -37,16 +37,6 @@ final class RocketChat
     }
 
     /**
-     * Returns default channel id or name.
-     *
-     * @return string|null
-     */
-    public function channel(): ?string
-    {
-        return $this->defaultChannel;
-    }
-
-    /**
      * Returns RocketChat base url.
      *
      * @return string
@@ -64,6 +54,16 @@ final class RocketChat
     public function token(): string
     {
         return $this->token;
+    }
+
+    /**
+     * Returns default channel id or name.
+     *
+     * @return string|null
+     */
+    public function defaultChannel(): ?string
+    {
+        return $this->defaultChannel;
     }
 
     /**
