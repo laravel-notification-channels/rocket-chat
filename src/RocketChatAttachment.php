@@ -310,8 +310,9 @@ class RocketChatAttachment
      * Set attachment data from array.
      *
      * @param array $data
+     * @return void
      */
-    private function setPropertiesFromArray(array $data)
+    private function setPropertiesFromArray(array $data): void
     {
         foreach ($data as $key => $value) {
             $methodName = Str::camel($key);
