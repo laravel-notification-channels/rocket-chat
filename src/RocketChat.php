@@ -18,32 +18,32 @@ final class RocketChat
     /** @var string */
     private $token;
 
-    /** @var string */
-    private $channel;
+    /** @var string|null */
+    private $defaultChannel;
 
     /**
      * @param  \GuzzleHttp\Client  $http
      * @param  string  $url
      * @param  string  $token
-     * @param  string  $channel
+     * @param  string|null  $defaultChannel
      * @return void
      */
-    public function __construct(HttpClient $http, string $url, string $token, string $channel)
+    public function __construct(HttpClient $http, string $url, string $token, ?string $defaultChannel = null)
     {
         $this->http = $http;
         $this->url = rtrim($url, '/');
         $this->token = $token;
-        $this->channel = $channel;
+        $this->defaultChannel = $defaultChannel;
     }
 
     /**
      * Returns default channel id or name.
      *
-     * @return string
+     * @return string|null
      */
-    public function channel(): string
+    public function channel(): ?string
     {
-        return $this->channel;
+        return $this->defaultChannel;
     }
 
     /**
