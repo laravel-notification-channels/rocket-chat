@@ -116,6 +116,7 @@ class RocketChatAttachment
             $date = clone $timestamp;
             $timestamp = $date->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d\TH:i:s.v\Z');
         }
+
         $this->timestamp = $timestamp;
 
         return $this;
@@ -316,9 +317,11 @@ class RocketChatAttachment
     {
         foreach ($data as $key => $value) {
             $methodName = Str::camel($key);
+
             if (! method_exists($this, $methodName)) {
                 continue;
             }
+
             $this->{$methodName}($value);
         }
     }
