@@ -18,32 +18,32 @@ final class RocketChat
     /** @var string */
     private $token;
 
-    /** @var string */
-    private $channel;
+    /** @var string|null */
+    private $defaultChannel;
 
     /**
      * @param  \GuzzleHttp\Client  $http
      * @param  string  $url
      * @param  string  $token
-     * @param  string  $channel
+     * @param  string|null  $defaultChannel
      * @return void
      */
-    public function __construct(HttpClient $http, $url, $token, $channel)
+    public function __construct(HttpClient $http, string $url, string $token, ?string $defaultChannel = null)
     {
         $this->http = $http;
         $this->url = rtrim($url, '/');
         $this->token = $token;
-        $this->channel = $channel;
+        $this->defaultChannel = $defaultChannel;
     }
 
     /**
      * Returns default channel id or name.
      *
-     * @return string
+     * @return string|null
      */
-    public function channel(): string
+    public function channel(): ?string
     {
-        return $this->channel;
+        return $this->defaultChannel;
     }
 
     /**
@@ -69,11 +69,11 @@ final class RocketChat
     /**
      * Send a message.
      *
-     * @param  string|int  $to
+     * @param  string  $to
      * @param  array  $message
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function sendMessage($to, $message): ResponseInterface
+    public function sendMessage(string $to, array $message): ResponseInterface
     {
         $url = sprintf('%s/hooks/%s', $this->url, $this->token);
 
@@ -91,7 +91,7 @@ final class RocketChat
      * @param  array  $options
      * @return \Psr\Http\Message\ResponseInterface
      */
-    private function post($url, $options): ResponseInterface
+    private function post(string $url, array $options): ResponseInterface
     {
         return $this->http->post($url, $options);
     }

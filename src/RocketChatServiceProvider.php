@@ -21,7 +21,7 @@ final class RocketChatServiceProvider extends ServiceProvider
             ->needs(RocketChat::class)
             ->give(function () {
                 return new RocketChat(
-                    new HttpClient,
+                    new HttpClient(),
                     Config::get('services.rocketchat.url'),
                     Config::get('services.rocketchat.token'),
                     Config::get('services.rocketchat.channel')

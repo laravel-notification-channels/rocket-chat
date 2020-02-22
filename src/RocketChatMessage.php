@@ -61,7 +61,7 @@ class RocketChatMessage
      * @param  string $content
      * @return static
      */
-    public static function create($content = ''): self
+    public static function create(string $content = ''): self
     {
         return new static($content);
     }
@@ -71,7 +71,7 @@ class RocketChatMessage
      *
      * @param string $content
      */
-    public function __construct($content = '')
+    public function __construct(string $content = '')
     {
         $this->content($content);
     }
@@ -82,7 +82,7 @@ class RocketChatMessage
      * @param  string  $accessToken
      * @return $this
      */
-    public function from($accessToken): self
+    public function from(string $accessToken): self
     {
         $this->from = $accessToken;
 
@@ -95,7 +95,7 @@ class RocketChatMessage
      * @param  string $channel
      * @return $this
      */
-    public function to($channel): self
+    public function to(string $channel): self
     {
         $this->channel = $channel;
 
@@ -148,7 +148,7 @@ class RocketChatMessage
      * @param  string  $content
      * @return $this
      */
-    public function content($content): self
+    public function content(string $content): self
     {
         $this->content = $content;
 
