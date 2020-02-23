@@ -6,6 +6,7 @@ namespace NotificationChannels\RocketChat\Test;
 
 use DateTime;
 use DateTimeImmutable;
+use InvalidArgumentException;
 use NotificationChannels\RocketChat\RocketChatAttachment;
 use PHPUnit\Framework\TestCase;
 
@@ -80,6 +81,16 @@ final class RocketChatAttachmentTest extends TestCase
         $attachment->timestamp($date);
 
         $this->assertSame(['ts' => '2020-02-19T19:00:00.000Z'], $attachment->toArray());
+    }
+
+    /** @test */
+    public function it_cannot_set_the_timestamp_as_integer(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $date = 1234567890;
+        $attachment = new RocketChatAttachment();
+        $attachment->timestamp($date);
     }
 
     /** @test */
