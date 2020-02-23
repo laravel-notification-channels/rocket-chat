@@ -109,7 +109,10 @@ class RocketChatAttachment
     public function timestamp($timestamp): self
     {
         if (! ($timestamp instanceof DateTime) && ! is_string($timestamp)) {
-            throw new InvalidArgumentException('Timestamp must be string or DateTime, '.gettype($timestamp).' given.');
+            throw new InvalidArgumentException(sprintf(
+                'Timestamp must be string or DateTime, %s given.',
+                get_class($timestamp)
+            ));
         }
 
         if ($timestamp instanceof DateTime) {
