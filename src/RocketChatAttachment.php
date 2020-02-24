@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NotificationChannels\RocketChat;
 
-use DateTime;
+use DateTimeInterface;
 use DateTimeZone;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
@@ -103,23 +103,23 @@ class RocketChatAttachment
     }
 
     /**
-     * @param string|\DateTime $timestamp
+     * @param string|\DateTimeInterface $timestamp
      * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
     public function timestamp($timestamp): self
     {
-        if (! ($timestamp instanceof DateTime) && ! is_string($timestamp)) {
-            $invalidType = gettype($timestamp);
-            if ($invalidType === 'object') {
-                $invalidType = get_class($timestamp);
-            }
+        if (! ($timestamp instanceof DateTimeInterface) && ! is_string($timestamp)) {
+            $invalidType = is_object($timestamp)
+                ? get_class($timestamp)
+                : gettype($timestamp);
+
             throw new InvalidArgumentException(sprintf(
                 'Timestamp must be string or DateTime, %s given.',
                 $invalidType
             ));
         }
 
-        if ($timestamp instanceof DateTime) {
+        if ($timestamp instanceof DateTimeInterface) {
             $date = clone $timestamp;
             $timestamp = $date->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d\TH:i:s.v\Z');
         }
