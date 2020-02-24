@@ -102,18 +102,4 @@ final class RocketChatMessageTest extends TestCase
 
         $this->assertCount(3, $message->toArray()['attachments']);
     }
-
-    /** @test */
-    public function it_can_clear_attachments(): void
-    {
-        $message = (new RocketChatMessage())->attachments([
-            RocketChatAttachment::make(),
-            RocketChatAttachment::make(),
-            RocketChatAttachment::make(),
-        ]);
-
-        $message->clearAttachments();
-
-        $this->assertArrayNotHasKey('attachments', $message->toArray());
-    }
 }
