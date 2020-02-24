@@ -170,18 +170,6 @@ class RocketChatMessage
     }
 
     /**
-     * Clear all attachments.
-     *
-     * @return $this
-     */
-    public function clearAttachments(): self
-    {
-        $this->attachments = [];
-
-        return $this;
-    }
-
-    /**
      * Get an array representation of the RocketChatMessage.
      *
      * @return array
