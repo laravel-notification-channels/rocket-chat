@@ -9,6 +9,7 @@ use DateTimeImmutable;
 use InvalidArgumentException;
 use NotificationChannels\RocketChat\RocketChatAttachment;
 use PHPUnit\Framework\TestCase;
+use DateTimeInterface;
 
 final class RocketChatAttachmentTest extends TestCase
 {
@@ -70,7 +71,7 @@ final class RocketChatAttachmentTest extends TestCase
         $attachment = new RocketChatAttachment();
         $attachment->timestamp($date);
 
-        $this->assertEquals(['ts' => '2020-02-19T19:00:00.000Z'], $attachment->toArray());
+        $this->assertEquals(['ts' => $date->format(DateTimeInterface::ATOM)], $attachment->toArray());
     }
 
     /** @test */
@@ -80,7 +81,7 @@ final class RocketChatAttachmentTest extends TestCase
         $attachment = new RocketChatAttachment();
         $attachment->timestamp($date);
 
-        $this->assertSame(['ts' => '2020-02-19T19:00:00.000Z'], $attachment->toArray());
+        $this->assertSame(['ts' => $date->format(DateTimeInterface::ATOM)], $attachment->toArray());
     }
 
     /** @test */
