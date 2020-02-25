@@ -119,7 +119,7 @@ class RocketChatAttachment
         }
 
         if ($timestamp instanceof DateTimeInterface) {
-            $timestamp = $timestamp->format(DateTimeInterface::ATOM);
+            $timestamp = $timestamp->format(DateTimeInterface::RFC3339);
         }
 
         $this->timestamp = $timestamp;
