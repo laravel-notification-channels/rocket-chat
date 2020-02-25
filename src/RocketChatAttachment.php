@@ -119,8 +119,7 @@ class RocketChatAttachment
         }
 
         if ($timestamp instanceof DateTimeInterface) {
-            $date = clone $timestamp;
-            $timestamp = $date->format(DateTimeInterface::ATOM);
+            $timestamp = $timestamp->format(DateTimeInterface::ATOM);
         }
 
         $this->timestamp = $timestamp;
