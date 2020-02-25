@@ -121,7 +121,7 @@ class RocketChatAttachment
 
         if ($timestamp instanceof DateTimeInterface) {
             $date = clone $timestamp;
-            $timestamp = $date->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d\TH:i:s.v\Z');
+            $timestamp = $date->format(DateTimeInterface::ATOM);
         }
 
         $this->timestamp = $timestamp;
