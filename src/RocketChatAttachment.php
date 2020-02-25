@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NotificationChannels\RocketChat;
 
 use DateTimeInterface;
-use DateTimeZone;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 

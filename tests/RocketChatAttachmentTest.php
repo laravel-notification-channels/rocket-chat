@@ -6,10 +6,10 @@ namespace NotificationChannels\RocketChat\Test;
 
 use DateTime;
 use DateTimeImmutable;
+use DateTimeInterface;
 use InvalidArgumentException;
 use NotificationChannels\RocketChat\RocketChatAttachment;
 use PHPUnit\Framework\TestCase;
-use DateTimeInterface;
 
 final class RocketChatAttachmentTest extends TestCase
 {
