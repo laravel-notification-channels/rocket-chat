@@ -31,7 +31,7 @@ All notable changes to `laravel-notification-channels/rocket-chat` will be docum
 
 - Initial release
 
-[Unreleased]: https://github.com/laravel-notification-channels/rocket-chat/compare/v0.1.0...master
+[Unreleased]: https://github.com/laravel-notification-channels/rocket-chat/compare/v0.2.0...master
 [0.2.0]: https://github.com/cybercog/laravel-love/compare/v0.1.0...v0.2.0
 
 [#7]: https://github.com/laravel-notification-channels/rocket-chat/pull/7
