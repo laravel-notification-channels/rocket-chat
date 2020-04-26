@@ -205,6 +205,8 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Anton Komarev]
+- [Nicholas]
+- [atymic]
 - [All Contributors](../../contributors)
 
 ## Change log
@@ -217,8 +219,11 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 ## About CyberCog
 
-[CyberCog](https://cybercog.su) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
+[CyberCog] is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
 
 ![cybercog-logo](https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png)
 
 [Anton Komarev]: https://komarev.com
+[Nicholas]: https://github.com/Funfare
+[atymic]: https://github.com/atymic
+[CyberCog]: https://cybercog.su
