@@ -14,8 +14,6 @@ All notable changes to `laravel-notification-channels/rocket-chat` will be docum
 
 - ([#7]) Method `channel` renamed to `getDefaultChannel` in `NotificationChannels\RocketChat\RocketChat` class
 - ([#7]) Method `token` renamed to `getToken` in `NotificationChannels\RocketChat\RocketChat` class
-- ([#7]) Method `create` renamed to `make` in `NotificationChannels\RocketChat\RocketChatMessage` class
-- ([#7]) Method `create` renamed to `make` in `NotificationChannels\RocketChat\RocketChatAttachment` class
 - ([#7]) Method `setFromArray` renamed to `setPropertiesFromArray` in `NotificationChannels\RocketChat\RocketChatAttachment` class
 
 ### Fixed

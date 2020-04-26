@@ -74,7 +74,7 @@ class RocketChatAttachment
      * @param array $data
      * @return \NotificationChannels\RocketChat\RocketChatAttachment
      */
-    public static function make(array $data = [])
+    public static function create(array $data = [])
     {
         return new self($data);
     }

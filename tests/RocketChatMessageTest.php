@@ -21,7 +21,7 @@ final class RocketChatMessageTest extends TestCase
     /** @test */
     public function it_can_accept_a_content_when_creating_a_message(): void
     {
-        $message = RocketChatMessage::make('test-content');
+        $message = RocketChatMessage::create('test-content');
 
         $this->assertSame(['text' => 'test-content'], $message->toArray());
     }
@@ -77,7 +77,7 @@ final class RocketChatMessageTest extends TestCase
     /** @test */
     public function it_can_set_attachment(): void
     {
-        $attachment = RocketChatAttachment::make(['title' => 'test']);
+        $attachment = RocketChatAttachment::create(['title' => 'test']);
         $message = (new RocketChatMessage())->attachment($attachment);
 
         $this->assertSame($attachment->toArray(), $message->toArray()['attachments'][0]);
@@ -95,9 +95,9 @@ final class RocketChatMessageTest extends TestCase
     public function it_can_set_multiple_attachments(): void
     {
         $message = (new RocketChatMessage())->attachments([
-            RocketChatAttachment::make(),
-            RocketChatAttachment::make(),
-            RocketChatAttachment::make(),
+            RocketChatAttachment::create(),
+            RocketChatAttachment::create(),
+            RocketChatAttachment::create(),
         ]);
 
         $this->assertCount(3, $message->toArray()['attachments']);
