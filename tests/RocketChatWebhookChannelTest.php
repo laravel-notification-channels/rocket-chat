@@ -106,7 +106,7 @@ class TestNotification extends Notification
 {
     public function toRocketChat(): RocketChatMessage
     {
-        return RocketChatMessage::make('hello')->from(':token')->to(':channel');
+        return RocketChatMessage::create('hello')->from(':token')->to(':channel');
     }
 }
 
@@ -114,7 +114,7 @@ class TestNotificationWithMissedChannel extends Notification
 {
     public function toRocketChat(): RocketChatMessage
     {
-        return RocketChatMessage::make('hello')->from(':token');
+        return RocketChatMessage::create('hello')->from(':token');
     }
 }
 
@@ -122,6 +122,6 @@ class TestNotificationWithMissedFrom extends Notification
 {
     public function toRocketChat(): RocketChatMessage
     {
-        return RocketChatMessage::make('hello')->to(':channel');
+        return RocketChatMessage::create('hello')->to(':channel');
     }
 }

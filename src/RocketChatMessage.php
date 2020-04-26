@@ -33,7 +33,7 @@ class RocketChatMessage
      * @param  string $content
      * @return static
      */
-    public static function make(string $content = ''): self
+    public static function create(string $content = ''): self
     {
         return new static($content);
     }
